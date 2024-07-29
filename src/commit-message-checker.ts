@@ -38,7 +38,7 @@ export interface ICheckerArguments {
  * @returns   void
  */
 export async function checkCommitMessages(
-  args: ICheckerArguments
+    args: ICheckerArguments
 ): Promise<void> {
   // Check arguments
   if (args.pattern.length === 0) {
@@ -67,14 +67,12 @@ export async function checkCommitMessages(
   let result = true
 
   core.info(`Checking commit messages against "${args.pattern}"...`)
-
-  for (const message of args.messages) {
-    if (checkMessage(message, args.pattern, args.flags)) {
-      core.info(`- OK: "${message}"`)
-    } else {
-      core.info(`- failed: "${message}"`)
-      result = false
-    }
+  const message = args.messages[0]
+  if (checkMessage(message, args.pattern, args.flags)) {
+    core.info(`- OK: "${message}"`)
+  } else {
+    core.info(`- failed: "${message}"`)
+    result = false
   }
 
   // Throw error in case of failed test

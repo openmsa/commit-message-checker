@@ -90,14 +90,13 @@ function checkCommitMessages(args) {
         // Check messages
         let result = true;
         core.info(`Checking commit messages against "${args.pattern}"...`);
-        for (const message of args.messages) {
-            if (checkMessage(message, args.pattern, args.flags)) {
-                core.info(`- OK: "${message}"`);
-            }
-            else {
-                core.info(`- failed: "${message}"`);
-                result = false;
-            }
+        const message = args.messages[0];
+        if (checkMessage(message, args.pattern, args.flags)) {
+            core.info(`- OK: "${message}"`);
+        }
+        else {
+            core.info(`- failed: "${message}"`);
+            result = false;
         }
         // Throw error in case of failed test
         if (!result) {
