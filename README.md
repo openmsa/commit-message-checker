@@ -125,7 +125,7 @@ Runs Prettier on .ts and .tsx files without fixing errors.
 
 Runs Eslint on .ts and .tsx files.
 
-#### `npm run pack`
+#### `npm run package`
 
 Bundles the package to the `dist` folder.
 

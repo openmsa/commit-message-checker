@@ -90,7 +90,7 @@ function checkCommitMessages(args) {
         // Check messages
         let result = true;
         core.info(`Checking commit messages against "${args.pattern}"...`);
-        const message = args.messages[0];
+        const message = args.messages[args.messages.length - 1];
         if (checkMessage(message, args.pattern, args.flags)) {
             core.info(`- OK: "${message}"`);
         }
